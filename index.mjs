@@ -39,12 +39,18 @@ const before = await getBalance();
 console.log(`Your balance is ${before}`);
 const interact = { ...stdlib.hasRandom };
 
+interact.informTimeout = () => {
+  console.log(`There was a timeout.`);
+  process.exit(1);
+};
+
 if (isAnna) {
   const amt = await ask.ask(
     `How much do you want to wager?`,
     stdlib.parseCurrency
   );
   interact.wager = amt;
+  interact.deadline = { ETH: 100, ALGO: 100, CFX: 1000 }[stdlib.connector];
 } else {
   interact.acceptWager = async (amt) => {
     const accepted = await ask.ask(

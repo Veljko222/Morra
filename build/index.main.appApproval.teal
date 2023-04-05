@@ -17,43 +17,60 @@ byte base64(AQ==)
 app_global_get
 concat
 preamble:
-pushbytess base64(Ulb9rA==) base64(hjRGbA==) base64(pRDNbQ==) base64(39kjKA==) base64(/IaNmA==)
+pushbytess base64(G275UA==) base64(dQ7kBg==) base64(pHE8lg==) base64(s4kcZA==) base64(ydV0EQ==) base64(39kjKA==) base64(4lfE+Q==) base64(5h/57w==) base64(7G85Dw==)
 txna ApplicationArgs 0
-match _reachp_0 _reachp_4 _reachp_5 _reachp_1 _reachp_3
+match _reachp_5 _reachp_2 _reachp_0 _reachp_4 _reachp_8 _reachp_1 _reachp_7 _reachp_6 _reachp_9
 errl:
 err
 _reachi_0:
 txn Sender
-store 23 // Anna/135
-load 11 // v306
+store 16 // Anna/280
+load 11 // v640
 int 0
 extract_uint64
-store 12 // v305
-load 11 // v306
+store 12 // v639
+load 11 // v640
 int 8
 extract_uint64
-store 22 // wager/136
-byte base64(rNEfww==)
-load 12 // v305
+store 21 // wager/281
+load 11 // v640
+int 16
+extract_uint64
+store 20 // deadline/282
+byte base64(93ETTQ==)
+load 12 // v639
 itob
 concat
-load 22 // wager/136
+load 21 // wager/281
 itob
 concat
-log // up to 20 bytes
-// ^ log: "_reach_e0" [v305,wager/136] "_reach_e0(uint64,uint64)"
-load 12 // v305
+load 20 // deadline/282
+itob
+concat
+log // up to 28 bytes
+// ^ log: "_reach_e0" [v639,wager/281,deadline/282] "_reach_e0(uint64,uint64,uint64)"
+load 12 // v639
 callsub l2_LF_timeCheck
-load 22 // wager/136
+load 21 // wager/281
 callsub l3_LF_checkTxn_False
 // ^ CheckPay
-// at ./index.rsh:51:8:dot
+// at ./index.rsh:58:8:dot
+global Round
+load 20 // deadline/282
++
+store 13 // v293
 l4_LF_svsDump_1:
-load 23 // Anna/135
-load 22 // wager/136
+load 16 // Anna/280
+load 21 // wager/281
 itob
 concat
-int 88
+load 20 // deadline/282
+itob
+concat
+load 13 // v293
+itob
+concat
+int 120
 bzero
 concat
 int 1
@@ -67,7 +84,7 @@ extract 0 127
 app_global_put
 byte base64(AQ==)
 swap
-extract 127 1
+extract 127 49
 app_global_put
 byte base64()
 load 1 // GV_currentStep :: UInt
@@ -95,259 +112,385 @@ int 1
 return
 _reachi_1:
 txn Sender
-store 21 // Jack/143
+store 15 // Jack/297
 int 1
 load 1 // GV_currentStep :: UInt
 ==
 assert
-l5_LF_svsLoad_1:
-dup
-extract 0 32
-store 23 // Anna/135
-int 32
-extract_uint64
-store 22 // wager/136
-load 11 // v309
+callsub l5_LF_svsLoad_1
+load 11 // v643
 btoi
-store 12 // v308
+store 12 // v642
 byte base64(1RUZFA==)
-load 12 // v308
+load 12 // v642
 itob
 concat
 log // up to 12 bytes
-// ^ log: "_reach_e1" [v308] "_reach_e1(uint64)"
-load 12 // v308
+// ^ log: "_reach_e1" [v642] "_reach_e1(uint64)"
+load 12 // v642
 callsub l2_LF_timeCheck
-load 22 // wager/136
+global Round
+load 13 // v293
+<
+assert
+load 21 // wager/281
 callsub l3_LF_checkTxn_False
 // ^ CheckPay
-// at ./index.rsh:58:8:dot
+// at ./index.rsh:65:8:dot
 int 1
 global Round
-store 19 // thisConsensusTime/149
-store 20 // outcome/148
-_reachl_2:
-load 20 // outcome/148
+load 21 // wager/281
+dup
++
+store 14 // netBalance/310
+store 27 // thisConsensusTime/303
+store 28 // outcome/302
+_reachl_3:
+load 28 // outcome/302
 int 1
 ==
-bz l11_ifF
-l12_LF_svsDump_4:
-load 23 // Anna/135
-load 22 // wager/136
+bz l12_ifF
+load 27 // thisConsensusTime/303
+load 20 // deadline/282
++
+store 11 // v325
+l13_LF_svsDump_5:
+load 16 // Anna/280
+load 21 // wager/281
 itob
 concat
-load 21 // Jack/143
-concat
-int 56
-bzero
-concat
-int 4
-global Round
-b updateStateNoOp
-_reachi_3:
-int 4
-load 1 // GV_currentStep :: UInt
-==
-assert
-l6_LF_svsLoad_4:
-dup
-extract 0 32
-store 23 // Anna/135
-dup
-int 32
-extract_uint64
-store 22 // wager/136
-extract 40 32
-store 21 // Jack/143
-load 11 // v312
-int 0
-extract_uint64
-store 12 // v311
-load 11 // v312
-extract 8 32
-store 18 // commitAnna/173
-load 11 // v312
-int 40
-extract_uint64
-store 17 // guessAnna/174
-byte base64(CfYAGw==)
-load 12 // v311
+load 20 // deadline/282
 itob
 concat
-load 18 // commitAnna/173
+load 15 // Jack/297
 concat
-load 17 // guessAnna/174
+load 14 // netBalance/310
 itob
 concat
-log // up to 52 bytes
-// ^ log: "_reach_e3" [v311,commitAnna/173,guessAnna/174] "_reach_e3(uint64,digest,uint64)"
-load 12 // v311
-callsub l2_LF_timeCheck
-load 23 // Anna/135
-txn Sender
-==
-assert
-// ^ Claim: sender correct
-// at ./index.rsh:74:10:dot
-l7_LF_svsDump_5:
-load 23 // Anna/135
-load 22 // wager/136
+load 11 // v325
 itob
 concat
-load 21 // Jack/143
-concat
-load 18 // commitAnna/173
-concat
-load 17 // guessAnna/174
-itob
-concat
-int 16
+int 80
 bzero
 concat
 int 5
 global Round
 b updateStateNoOp
+_reachi_2:
+int 1
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l5_LF_svsLoad_1
+load 11 // v646
+btoi
+store 12 // v645
+byte base64(l073Fw==)
+load 12 // v645
+itob
+concat
+log // up to 12 bytes
+// ^ log: "_reach_e2" [v645] "_reach_e2(uint64)"
+load 12 // v645
+callsub l2_LF_timeCheck
+global Round
+load 13 // v293
+>=
+assert
+load 21 // wager/281
+// resource: R_Account
+load 16 // Anna/280
+callsub l6_LF_makeTxn_False_False_False_True
+updateStateHalt:
+txn OnCompletion
+int DeleteApplication
+==
+assert
+// checked on completion
+callsub l14_LF_updateMbr
+// resource: R_Account
+int 0
+global CurrentApplicationAddress
+global CreatorAddress
+callsub l15_LF_makeTxn_False_True_False_True
+b updateState
 _reachi_4:
 int 5
 load 1 // GV_currentStep :: UInt
 ==
 assert
-l8_LF_svsLoad_5:
-dup
-extract 0 32
-store 23 // Anna/135
-dup
-int 32
-extract_uint64
-store 22 // wager/136
-dup
-extract 40 32
-store 21 // Jack/143
-dup
-extract 72 32
-store 18 // commitAnna/173
-int 104
-extract_uint64
-store 17 // guessAnna/174
-load 11 // v315
+callsub l7_LF_svsLoad_5
+load 12 // v649
 int 0
 extract_uint64
-store 12 // v314
-load 11 // v315
-int 8
-extract_uint64
-store 16 // handJack/183
-load 11 // v315
-int 16
-extract_uint64
-store 15 // guessJack/184
-byte base64(EgiB3A==)
-load 12 // v314
+store 13 // v648
+load 12 // v649
+extract 8 32
+store 19 // commitAnna/338
+load 12 // v649
+extract 40 32
+store 18 // commitAnnaG/339
+byte base64(GnIX1w==)
+load 13 // v648
 itob
 concat
-load 16 // handJack/183
-itob
+load 19 // commitAnna/338
 concat
-load 15 // guessJack/184
-itob
+load 18 // commitAnnaG/339
 concat
-log // up to 28 bytes
-// ^ log: "_reach_e4" [v314,handJack/183,guessJack/184] "_reach_e4(uint64,uint64,uint64)"
-load 12 // v314
+log // up to 76 bytes
+// ^ log: "_reach_e4" [v648,commitAnna/338,commitAnnaG/339] "_reach_e4(uint64,digest,digest)"
+load 13 // v648
 callsub l2_LF_timeCheck
-load 21 // Jack/143
+global Round
+load 11 // v325
+<
+assert
+load 16 // Anna/280
 txn Sender
 ==
 assert
 // ^ Claim: sender correct
-// at ./index.rsh:82:10:dot
-l9_LF_svsDump_6:
-load 23 // Anna/135
-load 22 // wager/136
+// at ./index.rsh:83:10:dot
+global Round
+load 20 // deadline/282
++
+store 22 // v349
+l8_LF_svsDump_7:
+load 16 // Anna/280
+load 21 // wager/281
 itob
 concat
-load 21 // Jack/143
-concat
-load 18 // commitAnna/173
-concat
-load 17 // guessAnna/174
+load 20 // deadline/282
 itob
 concat
-load 16 // handJack/183
+load 15 // Jack/297
+concat
+load 14 // netBalance/310
 itob
 concat
-load 15 // guessJack/184
+load 19 // commitAnna/338
+concat
+load 18 // commitAnnaG/339
+concat
+load 22 // v349
 itob
 concat
-int 6
+int 16
+bzero
+concat
+int 7
 global Round
 b updateStateNoOp
 _reachi_5:
-int 6
+int 5
 load 1 // GV_currentStep :: UInt
 ==
 assert
-l10_LF_svsLoad_6:
-dup
-extract 0 32
-store 23 // Anna/135
-dup
-int 32
-extract_uint64
-store 22 // wager/136
-dup
-extract 40 32
-store 21 // Jack/143
-dup
-extract 72 32
-store 18 // commitAnna/173
-dup
-int 104
-extract_uint64
-store 17 // guessAnna/174
-dup
-int 112
-extract_uint64
-store 16 // handJack/183
-int 120
-extract_uint64
-store 15 // guessJack/184
-load 11 // v318
+callsub l7_LF_svsLoad_5
+load 12 // v652
+btoi
+store 13 // v651
+byte base64(gaqazw==)
+load 13 // v651
+itob
+concat
+log // up to 12 bytes
+// ^ log: "_reach_e5" [v651] "_reach_e5(uint64)"
+load 13 // v651
+callsub l2_LF_timeCheck
+global Round
+load 11 // v325
+>=
+assert
+load 16 // Anna/280
+txn Sender
+==
+load 15 // Jack/297
+txn Sender
+==
+||
+assert
+// ^ Claim: sender correct
+// at reach standard library:197:11:dot
+// at ./index.rsh:84:53:application call to "closeTo" (defined at: reach standard library:195:8:function exp)
+load 14 // netBalance/310
+// resource: R_Account
+load 15 // Jack/297
+callsub l6_LF_makeTxn_False_False_False_True
+b updateStateHalt
+_reachi_6:
+int 7
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l9_LF_svsLoad_7
+load 11 // v655
 int 0
 extract_uint64
-store 12 // v317
-load 11 // v318
+store 13 // v654
+load 11 // v655
 int 8
 extract_uint64
-store 14 // saltAnna/191
-load 11 // v318
+store 17 // handJack/356
+load 11 // v655
 int 16
 extract_uint64
-store 13 // handAnna/192
-byte base64(VEC8Dg==)
-load 12 // v317
+store 12 // guessJack/357
+byte base64(f1Yu/A==)
+load 13 // v654
 itob
 concat
-load 14 // saltAnna/191
+load 17 // handJack/356
 itob
 concat
-load 13 // handAnna/192
+load 12 // guessJack/357
 itob
 concat
 log // up to 28 bytes
-// ^ log: "_reach_e5" [v317,saltAnna/191,handAnna/192] "_reach_e5(uint64,uint64,uint64)"
-load 12 // v317
+// ^ log: "_reach_e6" [v654,handJack/356,guessJack/357] "_reach_e6(uint64,uint64,uint64)"
+load 13 // v654
 callsub l2_LF_timeCheck
-load 23 // Anna/135
+global Round
+load 22 // v349
+<
+assert
+load 15 // Jack/297
 txn Sender
 ==
 assert
 // ^ Claim: sender correct
-// at ./index.rsh:90:10:dot
-load 18 // commitAnna/173
-load 14 // saltAnna/191
+// at ./index.rsh:92:10:dot
+global Round
+load 20 // deadline/282
++
+store 13 // v367
+l10_LF_svsDump_9:
+load 16 // Anna/280
+load 21 // wager/281
 itob
-load 13 // handAnna/192
+concat
+load 20 // deadline/282
+itob
+concat
+load 15 // Jack/297
+concat
+load 14 // netBalance/310
+itob
+concat
+load 19 // commitAnna/338
+concat
+load 18 // commitAnnaG/339
+concat
+load 17 // handJack/356
+itob
+concat
+load 12 // guessJack/357
+itob
+concat
+load 13 // v367
+itob
+concat
+int 9
+global Round
+b updateStateNoOp
+_reachi_7:
+int 7
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l9_LF_svsLoad_7
+load 11 // v658
+btoi
+store 12 // v657
+byte base64(caixow==)
+load 12 // v657
+itob
+concat
+log // up to 12 bytes
+// ^ log: "_reach_e7" [v657] "_reach_e7(uint64)"
+load 12 // v657
+callsub l2_LF_timeCheck
+global Round
+load 22 // v349
+>=
+assert
+load 16 // Anna/280
+txn Sender
+==
+load 15 // Jack/297
+txn Sender
+==
+||
+assert
+// ^ Claim: sender correct
+// at reach standard library:197:11:dot
+// at ./index.rsh:93:53:application call to "closeTo" (defined at: reach standard library:195:8:function exp)
+load 14 // netBalance/310
+// resource: R_Account
+load 16 // Anna/280
+callsub l6_LF_makeTxn_False_False_False_True
+b updateStateHalt
+_reachi_8:
+int 9
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l11_LF_svsLoad_9
+load 11 // v661
+int 0
+extract_uint64
+store 22 // v660
+load 11 // v661
+int 8
+extract_uint64
+store 26 // saltAnna/372
+load 11 // v661
+int 16
+extract_uint64
+store 25 // handAnna/373
+load 11 // v661
+int 24
+extract_uint64
+store 24 // saltAnnaG/374
+load 11 // v661
+int 32
+extract_uint64
+store 23 // guessAnna/375
+byte base64(h6UQvQ==)
+load 22 // v660
+itob
+concat
+load 26 // saltAnna/372
+itob
+concat
+load 25 // handAnna/373
+itob
+concat
+load 24 // saltAnnaG/374
+itob
+concat
+load 23 // guessAnna/375
+itob
+concat
+log // up to 44 bytes
+// ^ log: "_reach_e8" [v660,saltAnna/372,handAnna/373,saltAnnaG/374,guessAnna/375] "_reach_e8(uint64,uint64,uint64,uint64,uint64)"
+load 22 // v660
+callsub l2_LF_timeCheck
+global Round
+load 13 // v367
+<
+assert
+load 16 // Anna/280
+txn Sender
+==
+assert
+// ^ Claim: sender correct
+// at ./index.rsh:102:10:dot
+load 19 // commitAnna/338
+load 26 // saltAnna/372
+itob
+load 25 // handAnna/373
 itob
 concat
 sha256
@@ -355,31 +498,80 @@ sha256
 assert
 // ^ Claim
 // at reach standard library:69:17:application
-// at ./index.rsh:91:20:application call to "checkCommitment" (defined at: reach standard library:68:8:function exp)
-load 13 // handAnna/192
-load 16 // handJack/183
+// at ./index.rsh:104:19:application call to "checkCommitment" (defined at: reach standard library:68:8:function exp)
+load 18 // commitAnnaG/339
+load 24 // saltAnnaG/374
+itob
+load 23 // guessAnna/375
+itob
+concat
+sha256
+==
+assert
+// ^ Claim
+// at reach standard library:69:17:application
+// at ./index.rsh:105:19:application call to "checkCommitment" (defined at: reach standard library:68:8:function exp)
+load 25 // handAnna/373
+load 17 // handJack/356
 +
-store 11 // sum/199
+store 11 // sum/384
 int 1
 int 0
-load 11 // sum/199
-load 15 // guessJack/184
+load 11 // sum/384
+load 12 // guessJack/357
 ==
 select
 int 2
 int 1
-load 17 // guessAnna/174
-load 15 // guessJack/184
+load 23 // guessAnna/375
+load 12 // guessJack/357
 ==
 select
-load 11 // sum/199
-load 17 // guessAnna/174
+load 11 // sum/384
+load 23 // guessAnna/375
 ==
 select
 global Round
-store 19 // thisConsensusTime/149
-store 20 // outcome/148
-b _reachl_2
+store 27 // thisConsensusTime/303
+store 28 // outcome/302
+b _reachl_3
+_reachi_9:
+int 9
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l11_LF_svsLoad_9
+load 11 // v664
+btoi
+store 12 // v663
+byte base64(Y1dRXA==)
+load 12 // v663
+itob
+concat
+log // up to 12 bytes
+// ^ log: "_reach_e9" [v663] "_reach_e9(uint64)"
+load 12 // v663
+callsub l2_LF_timeCheck
+global Round
+load 13 // v367
+>=
+assert
+load 16 // Anna/280
+txn Sender
+==
+load 15 // Jack/297
+txn Sender
+==
+||
+assert
+// ^ Claim: sender correct
+// at reach standard library:197:11:dot
+// at ./index.rsh:103:53:application call to "closeTo" (defined at: reach standard library:195:8:function exp)
+load 14 // netBalance/310
+// resource: R_Account
+load 15 // Jack/297
+callsub l6_LF_makeTxn_False_False_False_True
+b updateStateHalt
 _reachp_0:
 callsub l0_LF_wasntMeth
 int 100000
@@ -388,28 +580,48 @@ load 6 // GV_mbrAdd :: UInt
 +
 store 6 // GV_mbrAdd :: UInt
 txna ApplicationArgs 1
-store 11 // v306
+store 11 // v640
 b _reachi_0
 _reachp_1:
 callsub l0_LF_wasntMeth
 txna ApplicationArgs 1
-store 11 // v309
+store 11 // v643
 b _reachi_1
-_reachp_3:
+_reachp_2:
 callsub l0_LF_wasntMeth
 txna ApplicationArgs 1
-store 11 // v312
-b _reachi_3
+store 11 // v646
+b _reachi_2
 _reachp_4:
 callsub l0_LF_wasntMeth
 txna ApplicationArgs 1
-store 11 // v315
+store 12 // v649
 b _reachi_4
 _reachp_5:
 callsub l0_LF_wasntMeth
 txna ApplicationArgs 1
-store 11 // v318
+store 12 // v652
 b _reachi_5
+_reachp_6:
+callsub l0_LF_wasntMeth
+txna ApplicationArgs 1
+store 11 // v655
+b _reachi_6
+_reachp_7:
+callsub l0_LF_wasntMeth
+txna ApplicationArgs 1
+store 11 // v658
+b _reachi_7
+_reachp_8:
+callsub l0_LF_wasntMeth
+txna ApplicationArgs 1
+store 11 // v661
+b _reachi_8
+_reachp_9:
+callsub l0_LF_wasntMeth
+txna ApplicationArgs 1
+store 11 // v664
+b _reachi_9
 alloc:
 int 0
 txn GlobalNumUint
@@ -428,7 +640,7 @@ txn LocalNumByteSlice
 ==
 assert
 callsub l0_LF_wasntMeth
-int 128
+int 176
 bzero
 int 0
 int 0
@@ -440,31 +652,19 @@ int NoOp
 assert
 // checked on completion
 b apiReturn_noCheck
-l11_ifF:
+l12_ifF:
 int 2
-load 22 // wager/136
+load 21 // wager/281
 *
 // resource: R_Account
-load 21 // Jack/143
-load 23 // Anna/135
-load 20 // outcome/148
+load 15 // Jack/297
+load 16 // Anna/280
+load 28 // outcome/302
 int 2
 ==
 select
-callsub l13_LF_makeTxn_False_False_False_True
-updateStateHalt:
-txn OnCompletion
-int DeleteApplication
-==
-assert
-// checked on completion
-callsub l14_LF_updateMbr
-// resource: R_Account
-int 0
-global CurrentApplicationAddress
-global CreatorAddress
-callsub l15_LF_makeTxn_False_True_False_True
-b updateState
+callsub l6_LF_makeTxn_False_False_False_True
+b updateStateHalt
 l16_LF_makeTxnK_False_True:
 int 0
 itxn_field Fee
@@ -483,7 +683,7 @@ swap
 dup
 store 6 // GV_mbrAdd :: UInt
 global CreatorAddress
-callsub l13_LF_makeTxn_False_False_False_True
+callsub l6_LF_makeTxn_False_False_False_True
 retsub
 updateMbr_pos_eq:
 -
@@ -507,6 +707,9 @@ load 2 // GV_currentTime :: UInt
 ||
 assert
 retsub
+l6_LF_makeTxn_False_False_False_True:
+itxn_begin
+b l16_LF_makeTxnK_False_True
 l3_LF_checkTxn_False:
 // resource: R_Txn
 txn GroupIndex
@@ -529,6 +732,74 @@ gtxns Amount
 ==
 assert
 retsub
+l9_LF_svsLoad_7:
+dup
+extract 0 32
+store 16 // Anna/280
+dup
+int 32
+extract_uint64
+store 21 // wager/281
+dup
+int 40
+extract_uint64
+store 20 // deadline/282
+dup
+extract 48 32
+store 15 // Jack/297
+dup
+int 80
+extract_uint64
+store 14 // netBalance/310
+dup
+extract 88 32
+store 19 // commitAnna/338
+dup
+extract 120 32
+store 18 // commitAnnaG/339
+int 152
+extract_uint64
+store 22 // v349
+retsub
+l7_LF_svsLoad_5:
+dup
+extract 0 32
+store 16 // Anna/280
+dup
+int 32
+extract_uint64
+store 21 // wager/281
+dup
+int 40
+extract_uint64
+store 20 // deadline/282
+dup
+extract 48 32
+store 15 // Jack/297
+dup
+int 80
+extract_uint64
+store 14 // netBalance/310
+int 88
+extract_uint64
+store 11 // v325
+retsub
+l5_LF_svsLoad_1:
+dup
+extract 0 32
+store 16 // Anna/280
+dup
+int 32
+extract_uint64
+store 21 // wager/281
+dup
+int 40
+extract_uint64
+store 20 // deadline/282
+int 48
+extract_uint64
+store 13 // v293
+retsub
 l14_LF_updateMbr:
 load 6 // GV_mbrAdd :: UInt
 load 7 // GV_mbrSub :: UInt
@@ -536,9 +807,43 @@ dup2
 >=
 bz updateMbr_neg
 b updateMbr_pos_eq
-l13_LF_makeTxn_False_False_False_True:
-itxn_begin
-b l16_LF_makeTxnK_False_True
+l11_LF_svsLoad_9:
+dup
+extract 0 32
+store 16 // Anna/280
+dup
+int 32
+extract_uint64
+store 21 // wager/281
+dup
+int 40
+extract_uint64
+store 20 // deadline/282
+dup
+extract 48 32
+store 15 // Jack/297
+dup
+int 80
+extract_uint64
+store 14 // netBalance/310
+dup
+extract 88 32
+store 19 // commitAnna/338
+dup
+extract 120 32
+store 18 // commitAnnaG/339
+dup
+int 152
+extract_uint64
+store 17 // handJack/356
+dup
+int 160
+extract_uint64
+store 12 // guessJack/357
+int 168
+extract_uint64
+store 13 // v367
+retsub
 l15_LF_makeTxn_False_True_False_True:
 itxn_begin
 itxn_field CloseRemainderTo
