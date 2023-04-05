@@ -1,6 +1,6 @@
 'reach 0.1';
 
-const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
+const [ isOutcome, J_WINS, DRAW, A_WINS ] = makeEnum(3);
 
 function winner(handAnna, handJack, guessAnna, guessJack) {
   const sum=handAnna+handJack;
@@ -33,21 +33,36 @@ const Player = {
 export const main = Reach.App(() => {
   const Anna = Participant('Anna', {
     ...Player,
-    
+    wager: UInt, // atomic units of currency
     
   });
   const Jack   = Participant('Jack', {
     ...Player,
-   
+    acceptWager: Fun([UInt], Null),
   });
   init();
 
 
 
-  
+  Anna.only(() => {
+    const wager = declassify(interact.wager);
+    
+  });
+  Anna.publish(wager)  //Anna is paying the wager and publishing a deadline
+    .pay(wager);
+  commit();
+
+  Jack.only(() => {
+    interact.acceptWager(wager); //Jack accepts wager
+  });
+  Jack.pay(wager);
     
 
- 
+  var outcome = DRAW;    //Outcome variable which is equals to DRAW 
+  invariant( balance() == 2 * wager && isOutcome(outcome) ); //Condition which has to be truth and it is not changing before, in nor after loop
+
+  while ( outcome == DRAW ) {   //While loop - Looping as long as variable outcome is equal DRAW
+    commit(); //Moving from consensus to local step
 
     Anna.only(() => {      
       const _handAnna = interact.getHand();  //What Anna showed
@@ -75,11 +90,18 @@ export const main = Reach.App(() => {
     Anna.publish(saltAnna,handAnna);
     checkCommitment(commitAnna, saltAnna, handAnna);   //Anna is publishing info so we can use them
       
+     //Checking if Anna tried to change what she showed at the begining
     
+  outcome = winner(handAnna, handJack, guessAnna, guessJack);   //Updating value of loop variable outcome (we are sending values to function Winner, which returns outcome)
+  continue;   //Reach requires continue for WHILE loops (returning to loop condition)
+}   //End of loop
 
+assert(outcome == A_WINS || outcome == J_WINS);   //Checking if outcome is Anna won or Jack won
+transfer(2 * wager).to(outcome == A_WINS ? Anna : Jack);  //Transfer of a wager to the winner
 commit();
-const outcome = winner(handAnna, handJack, guessAnna, guessJack);
+
   each([Anna, Jack], () => {
     interact.seeOutcome(outcome); //Showing outcome for each
   });
 });
+

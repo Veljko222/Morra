@@ -39,7 +39,23 @@ const before = await getBalance();
 console.log(`Your balance is ${before}`);
 const interact = { ...stdlib.hasRandom };
 
-
+if (isAnna) {
+  const amt = await ask.ask(
+    `How much do you want to wager?`,
+    stdlib.parseCurrency
+  );
+  interact.wager = amt;
+} else {
+  interact.acceptWager = async (amt) => {
+    const accepted = await ask.ask(
+      `Do you accept the wager of ${fmt(amt)}?`,
+      ask.yesno
+    );
+    if (!accepted) {
+      process.exit(0);
+    }
+  };
+}
 const HAND = [0, 1, 2, 3, 4, 5];
 
 interact.getHand = async () => {
